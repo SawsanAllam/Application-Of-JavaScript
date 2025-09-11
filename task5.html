@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            width: 600px;
+            height: 500px;
+            margin: 50px auto;
+            text-align: center;
+            background-color: rgba(165, 42, 42, 0.226);
+        }
+        h1 {
+            margin-top: 20px;
+           color: blue;
+        }
+       
+        .search-container {
+              display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        input {
+            width: 300px;
+            padding-top: 10px;
+            border-radius: 20px;
+            padding: 10px;
+        }
+        .btnSearch {
+            width: 100px;
+            height:30px;
+            border-radius: 20px;
+           padding: 10px;
+          
+        }
+        .products {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .product {
+            width: 150px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+  <section>
+     <h1>Product List</h1> 
+   <form action="">
+  <div class="search-by-name search-container">
+     <input type="search" name="searchName" id="searchName" placeholder="Search By name">
+   <button class="btnSearch">Search</button>
+  </div>
+  <div class="search-by-Price search-container">
+     <input type="search" name="searchprice" id="searchprice" placeholder="Search By Price">
+
+  </div>
+   </form>
+   <div class="products">
+    <div class="product">
+        <h3>product 1</h3>
+        <p><span>50$</span></p>
+    </div>
+    <div class="product">
+         <h3>product 2</h3>
+        <p><span>80$</span></p>
+    </div>
+    <div class="product">
+         <h3>product 5</h3>
+        <p><span>50$</span></p>
+    </div>
+    <div class="product">
+         <h3>product 3</h3>
+        <p>price: <span>150$</span></p>
+    </div>
+    <div class="product">
+         <h3>product 4</h3>
+        <p>price:<span>150$<span></p>
+    </div>
+    
+      <div class="product">
+        <h3>product 1</h3>
+        <p>price :<span>50$</span></p>
+    </div>
+    <div class="product">
+         <h3>product 6</h3>
+        <p>price :<span>200$</span></p>
+    </div>
+   </div>
+  </section>
+  <script>
+    let searchNameInput = document.getElementById("searchName");
+    let btnSearchName = document.querySelector(".btnSearch");
+    let products= document.querySelectorAll('.product');
+    let inputSearchPrice = document.querySelector('#searchprice')
+    
+    btnSearchName.addEventListener('click', e =>{
+        e.preventDefault();
+        let valueInput = searchNameInput.value.toLowerCase();
+        // console.log(valueInput);
+        products.forEach(product=>{
+            let nameProduct =product.querySelector('h3').innerText.toLowerCase();
+            if(nameProduct.includes(valueInput)){
+                product.style.display="block";
+            }else{
+                product.style.display= "none"
+            }
+        })
+    });
+    inputSearchPrice.addEventListener('input', e =>{
+        products.forEach(product=>{
+            let price= product.querySelector('span').innerText.toLowerCase();
+            if(price.includes(inputSearchPrice.value)){
+                product.style.display= "block";
+            }else{
+                product.style.display="none";
+            }
+        })
+    })
+
+  
+
+  </script>
+</body>
+</html>

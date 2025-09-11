@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     
+        section {
+            margin: 0 auto;
+            width: 500px;
+            height: 400px;
+            background-color: rgba(17, 0, 255, 0.555);
+            text-align: center;
+            border-radius: 50px;
+            padding: 20px;
+        }
+        h1 {
+            color: #fff;
+           
+        }
+        input {
+            padding: 15px;
+            border-radius: 20px;
+            width: 41%;
+            height: 16px;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            margin: 10px;
+        }
+        input:focus ,
+        button:focus{
+            box-shadow: 0px 0px 9px 1px blue;
+        }
+        .operation {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        button {
+            width: 40px;
+            height: 40px;
+            font-size: 30px;
+            color: blue;
+                border: none;
+             cursor: pointer;
+             border-radius: 50%;
+        }
+.msg {
+    display: none;
+    margin: 20px auto;
+    font-size: 20px;
+}
+        .error {
+            color: red;
+        }
+        .result {
+            color: green;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <section>
+        <h1>Calculater</h1>
+        <form action="">
+            <div class="input">
+                <input type="number" id="num-1" placeholder="Insert num 1">
+            </div>
+            <div class="input">
+                <input type="number" id="num-2" placeholder="Insert num 2">
+            </div>
+        </form>
+        <div class="operation">
+            <button data-op="+">+</button>
+            <button data-op="-">-</button>
+            <button data-op="/">/</button>
+            <button data-op="*">*</button>
+        </div>
+        <div class="error msg"></div>
+        <div class="result msg"></div>
+    </section>
+    <script>
+    
+         let result = document.querySelector(".result");
+         let err = document.querySelector(".error");
+        let buttons = document.querySelectorAll("button");
+
+
+        // console.log(num1, num2, add, sub, multi,divid, result);
+      buttons.forEach((btn)=>{
+        btn.addEventListener('click',()=>{
+                 let num1 =parseFloat( document.getElementById("num-1").value);
+        let num2 =parseFloat(document.getElementById("num-2").value);
+        let op = btn.dataset.op;
+        let res;
+        let error;
+
+        if(isNaN(num1)|| isNaN(num2)){
+           error= "please Enter The Number";
+            err.style.display="block";
+           err.innerHTML= error;
+          
+        //    result.style.display= "none";
+           result.innerHTML="";
+                return;
+        }else {
+            switch(op){
+                case '+':
+                  res =  num1+num2;
+                    break;
+                case '-':
+                      res=  num1-num2;
+                        break;
+                case "*":
+                   res= num1*num2;
+                    break;
+                case "/": 
+               res=   num1/ num2;
+               
+            }
+        }
+        err.style.display= "none";
+        result.style.display= "block"
+          result.innerHTML = res;
+        })
+      
+
+      })
+    
+
+    </script>
+</body>
+</html>

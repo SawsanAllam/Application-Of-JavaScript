@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            width: 800px;
+            height: 400px;
+            background-color: blueviolet;
+            margin: 80px auto;
+            padding: 30px;
+            text-align: center;
+            color: #fff;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .product {
+            width: 200px;
+            height: 130px;
+            background-color: blue;
+            color: #fff;
+            border-radius: 20px;
+            padding: 10px;
+            margin-top: 20px;
+            
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Product prices after tax</h1>
+        <div class="container">
+            <div class="product">
+                <h2>product 1</h2>
+                <p>The real price: <span class="price">50</span>$</p>
+                <p>product price after tax: <span class="tax"></span>$</p>
+            </div>
+            <div class="product">
+                <h2>product 2</h2>
+                <p>The real price: <span class="price">70</span>$</p>
+                <p>product price after tax: <span class="tax"></span>$</p>
+            </div>
+            <div class="product">
+                <h2>product 3</h2>
+                <p>The real price: <span class="price">120</span>$</p>
+                <p>product price after tax: <span class="tax"></span>$</p>
+            </div>
+
+        </div>
+    </section>
+    <script>
+        let price = document.querySelectorAll(".price");
+        let priceTax = document.querySelectorAll(".tax");
+        let taxes = 0.14;
+        price.forEach((productPrice,index)=>{
+         let   priceAfterTax= productPrice.textContent*(1+ taxes) ;
+          console.log(priceAfterTax);
+          priceTax[index].textContent= priceAfterTax.toFixed(2)
+          
+     })
+
+    </script>
+</body>
+</html>

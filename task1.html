@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            border: 0;
+            direction: rtl;
+        }
+        body {
+            height: 100vh;
+            background-image: url(./OIP.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 60% 60%;
+            display:flex ;
+            justify-content: center;
+            align-items: center;
+        }
+section{
+    width: 700px;
+    height: 450px;
+    background-color: #95c5904f;
+    /* margin: 40px auto; */
+    box-shadow: 1px 1px 8px 0px;
+    border: 1px solid #afadad;
+     text-align: center;
+     padding-block: 30px;
+     border-radius: 20px;
+}
+h1 {
+    color: blue;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+ .input {
+    width: 100%;
+    margin-bottom: 20px;
+
+ }
+ input {
+    width: 80%;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding-inline: 10px;
+    padding-block: 20px;
+ }
+ input::placeholder {
+    font-size: 20px;
+ }
+ .active {
+    border: 2px solid blue;
+ }
+ button {
+    background-color: rgba(23, 23, 168, 0.781);
+    width: 80%;
+    border: none;
+    padding-block: 20px;
+    border-radius: 20px;
+    color: #fff;
+   font-size: 20px;
+
+ }
+
+ .result {
+    margin-block: 20px;
+    font-size: 22px;
+    text-align: center;
+ }
+ 
+    </style>
+</head>
+<body>
+    <section>
+        <h1>ادخل بياناتك</h1>
+        <form action="">
+           <div class="input">
+             <input type="text" id="input-name" placeholder="ادخل اسمك" required>
+           </div>
+           <div class="input">
+             <input type="number" name="" id="input-age"  placeholder="ادخل سنك" required>
+           </div>
+            <div class="input">
+                <input type="text" id="input-hoppy"placeholder="ادخل هوايتك" required>
+            </div>
+            <button id="submit">اعرض الرساله</button>
+        </form>
+          <div class="error result"></div>
+        <div class="succes result"></div>
+  
+    </section>
+ 
+        
+    <script>
+        let iName= document.getElementById('input-name');
+        let iAge= document.getElementById('input-age');
+        let iHoppy= document.getElementById('input-hoppy');
+        let submit= document.getElementById('submit');
+        let result= document.querySelector('.succes');
+        let error= document.querySelector('.error');
+        let elements = document.querySelectorAll('input');
+        
+        // elements.forEach((element)=>{
+        //     element.addEventListener('click',()=>{
+        //         elements.forEach((el)=>{
+        //             el.classList.remove('active');
+
+        //         })
+        //         element.classList.add('active');
+               
+        //     })
+        // })
+
+
+       submit.addEventListener('click', function(e){
+        e.preventDefault();
+//  console.log('cllicked');
+       let info= {
+           name: iName.value.trim(),
+           age: iAge.value.trim(),
+           hoppy: iHoppy.value.trim()
+       }
+       if(!info.name|| !info.age ||!info.hoppy){
+          error.textContent= 'من فضلك ادخل بياناتك';
+          error.style.color ='red';
+
+       }else {
+        result.textContent=`اسمك ${info.name} عمرك ${info.age} هوايتك ${info.hoppy}`;
+        result.style.color= 'green';
+        error.style.display ='none'
+       }
+    iName.value= "";
+    iAge.value="";
+    iHoppy.value="";
+       
+       })
+
+    </script>
+</body>
+</html

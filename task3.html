@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Favorite Day</h1>
+    <form action="" id="dayForm">
+      <input type="text" id="inputValue" />
+      <input type="submit" value="check" class="btn" />
+    </form>
+    <div class="msg"></div>
+    <script>
+      let inputValue = document.querySelector("#inputValue");
+      let btn = document.querySelector(".btn");
+      let msg = document.querySelector(".msg");
+      let dayForm = document.querySelector("#dayForm");
+      console.log(inputValue, btn);
+
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        let day = inputValue.value.trim().toLowerCase();
+
+        let message;
+
+        switch (day) {
+          case "friday":
+            message = "Rest Day";
+            break;
+          case "saturday":
+            message = "first day of the week";
+            break;
+          case "sunday":
+            message = "it is nice day";
+            break;
+          case "monday":
+            message = "work hard";
+            break;
+          case "tuesday":
+            message = "make your memory in this  day";
+            break;
+          case "wednesday":
+            message = "my lovely day";
+            break;
+          case "thursday":
+            message = "finally last day of the week";
+            break;
+          default:
+            message = "please insert the day";
+        }
+
+        msg.textContent = message;
+        inputValue.value = "";
+    
+      });
+    </script>
+  </body>
+</html>
