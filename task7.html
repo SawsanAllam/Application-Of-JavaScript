@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      section {
+        text-align: center;
+      }
+        .container {
+            padding: 30px;
+            margin: 0 auto;
+            width: 80%;
+            background-color: #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: aqua;
+            padding: 10px;
+            border-radius: 20px;
+            width: 300px;
+            height: 150px;
+            margin: 10px;
+        }
+        button {
+            width: 300px;
+            height: 50px;
+            border: 2px solid aqua;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+ <section>
+       <h1>Porduct List</h1>
+    <div class="container"></div>
+    <button>display product higher than 100$</button>
+ </section>
+   <script>
+    let container =document.querySelector(".container");
+    let btn = document.querySelector("button")
+    console.log(container);
+    
+    let products = [
+        {name : "product 1", price : 50},
+        {name : "product 2", price : 80},
+        {name : "product 3", price : 100},    
+        {name : "product 4", price : 130},
+        {name : "product 5", price : 180},
+        {name : "product 6", price : 200},
+    ]
+    let tax= 0.14;
+
+function displayProduct (productList){
+    let allProduct = "";
+        productList.forEach(product=>{
+let productAfterTax= product.price * (1+tax);
+// console.log(product.name, productAfterTax.toFixed(0));
+ 
+allProduct+=   
+
+     `<div class="card">
+    <h2> ${product.name}</h2>
+    <p>price :${product.price} $</p>
+    <p>price after tax :${productAfterTax.toFixed(0)} $</p>
+    </div>`
+   
+
+   })
+    container.innerHTML =allProduct;
+}
+displayProduct(products);
+btn.addEventListener('click', (e)=>{
+ e.preventDefault();
+ let filterdProduct =
+ products.filter(product=>product.price> 100);
+ displayProduct(filterdProduct);
+
+})
+
+   </script> 
+</body>
+</html>

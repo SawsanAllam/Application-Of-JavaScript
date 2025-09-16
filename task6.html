@@ -60,7 +60,7 @@
         price.forEach((productPrice,index)=>{
          let   priceAfterTax= productPrice.textContent*(1+ taxes) ;
           console.log(priceAfterTax);
-          priceTax[index].textContent= priceAfterTax.toFixed(2)
+          priceTax[index].textContent= priceAfterTax.toFixed(0)
           
      })
 
