@@ -9,7 +9,7 @@
             box-sizing: border-box;
             margin: 0;
             border: 0;
-            direction: rtl;
+           
         }
         body {
             height: 100vh;
@@ -77,18 +77,18 @@ h1 {
 </head>
 <body>
     <section>
-        <h1>ادخل بياناتك</h1>
+        <h1>Enter Your Data</h1>
         <form action="">
            <div class="input">
-             <input type="text" id="input-name" placeholder="ادخل اسمك" required>
+             <input type="text" id="input-name" placeholder="Enter Your Name "required>
            </div>
            <div class="input">
-             <input type="number" name="" id="input-age"  placeholder="ادخل سنك" required>
+             <input type="number" name="" id="input-age"  placeholder="enter Your Age" required>
            </div>
             <div class="input">
-                <input type="text" id="input-hoppy"placeholder="ادخل هوايتك" required>
+                <input type="text" id="input-hoppy"placeholder="enter Your Hoppy" required>
             </div>
-            <button id="submit">اعرض الرساله</button>
+            <button id="submit">Show Massege</button>
         </form>
           <div class="error result"></div>
         <div class="succes result"></div>
@@ -105,36 +105,25 @@ h1 {
         let error= document.querySelector('.error');
         let elements = document.querySelectorAll('input');
         
-        // elements.forEach((element)=>{
-        //     element.addEventListener('click',()=>{
-        //         elements.forEach((el)=>{
-        //             el.classList.remove('active');
-
-        //         })
-        //         element.classList.add('active');
-               
-        //     })
-        // })
-
 
        submit.addEventListener('click', function(e){
         e.preventDefault();
 //  console.log('cllicked');
        let info= {
-           name: iName.value.trim(),
+           name: iName.value.trim().charAt(0).toUpperCase() + iName.value.trim().slice(1).toLowerCase(),
            age: iAge.value.trim(),
-           hoppy: iHoppy.value.trim()
+           hoppy: iHoppy.value.trim().charAt(0).toUpperCase() + iHoppy.value.trim().slice(1).toLowerCase()
        }
        if(!info.name|| !info.age ||!info.hoppy){
-          error.textContent= 'من فضلك ادخل بياناتك';
+          error.textContent= 'Please Enter your Information';
           error.style.color ='red';
 
        }else {
-        result.textContent=`اسمك ${info.name} عمرك ${info.age} هوايتك ${info.hoppy}`;
+        result.textContent=`Your Name is ${info.name} Your Age is ${info.age}  Your hoppy is ${info.hoppy}`;
         result.style.color= 'green';
         error.style.display ='none'
        }
-    iName.value= "";
+    iName.value= ""; 
     iAge.value="";
     iHoppy.value="";
        

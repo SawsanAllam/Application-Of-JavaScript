@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    section {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .user-set,
+    .user-map {
+      width: 300px;
+      background-color: #f9f9f9;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+    }
+
+    .user-set:hover,
+    .user-map:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      background: #eaf4ff;
+      padding: 10px 15px;
+      margin: 8px 0;
+      border-radius: 8px;
+      color: #333;
+      font-size: 15px;
+      line-height: 1.5;
+      transition: background 0.3s;
+    }
+
+    li:hover {
+      background: #d7e7ff;
+    }
+
+    .user-map h2 {
+      font-size: 17px;
+      color: #0077ff;
+      margin-bottom: 5px;
+    }
+
+  
+  </style>
+</head>
+<body>
+    <section>
+        <div class="user-set">
+            <h2>User</h2>
+            <div class="myset"></div>
+        </div>
+        <div class="user-map">
+            <h2>Product</h2>
+            <div class="mymap"></div>
+        </div>
+    </section>
+    <script>
+let userSet = document.querySelector('.myset');
+let prdouctMap = document.querySelector('.mymap');
+
+let mySet = []
+       const users = new Set() ;
+       users.add('Osama');
+       users.add('Asmaa');
+       users.add('Omar');
+
+       users.add('Ola');
+       users.add('Ola');
+       console.log(users.has('Omar'));
+       console.log(users.size);
+       users.delete('Asmaa');
+         console.log(users.size);
+for (const element of users) {
+    mySet.push(`<li>${element}</li>`)
+}
+         userSet.innerHTML = `<ul>${mySet.join('')}</ul>`
+        //  users.clear()
+        //  console.log(users);
+
+       ////////! map
+        let myMap=[]
+        const prdouct = new Map();
+       prdouct.set("laptop",{price:1500, quantity:4});
+        prdouct.set("phone",{price:8000,quantity:2})
+        console.log(prdouct.size);
+        console.log([...prdouct.entries()]);
+        for (const[key, value] of prdouct) {
+            myMap.push(`<li><h2>${key}:</h2> price:${value.price} quantity:${value.quantity}</li>`)
+        }
+        prdouctMap.innerHTML= `<ul>${myMap.join('')}</ul>`
+
+
+        
+         
+    </script>
+
+</body>
+</html>

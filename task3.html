@@ -3,57 +3,126 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Favorite Day</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #93c5fd, #bfdbfe);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      section {
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        width: 350px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #2563eb;
+        margin-bottom: 20px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      input[type="text"] {
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        outline: none;
+        text-align: center;
+      }
+
+      input[type="text"]:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+      }
+
+      .btn {
+        padding: 12px;
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #1d4ed8;
+      }
+
+      .msg {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #374151;
+        background: #eff6ff;
+        padding: 10px;
+        border-radius: 10px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Favorite Day</h1>
-    <form action="" id="dayForm">
-      <input type="text" id="inputValue" />
-      <input type="submit" value="check" class="btn" />
-    </form>
-    <div class="msg"></div>
+    <section>
+      <h1>Favorite Day</h1>
+      <form id="dayForm">
+        <input type="text" id="inputValue" placeholder="Enter a day..." />
+        <input type="submit" value="Check" class="btn" />
+      </form>
+      <div class="msg"></div>
+    </section>
+
     <script>
       let inputValue = document.querySelector("#inputValue");
       let btn = document.querySelector(".btn");
       let msg = document.querySelector(".msg");
-      let dayForm = document.querySelector("#dayForm");
-      console.log(inputValue, btn);
 
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         let day = inputValue.value.trim().toLowerCase();
-
         let message;
 
         switch (day) {
           case "friday":
-            message = "Rest Day";
+            message = "🕌 Rest Day";
             break;
           case "saturday":
-            message = "first day of the week";
+            message = "🌅 First day of the week";
             break;
           case "sunday":
-            message = "it is nice day";
+            message = "☀️ It’s a nice day";
             break;
           case "monday":
-            message = "work hard";
+            message = "💪 Work hard!";
             break;
           case "tuesday":
-            message = "make your memory in this  day";
+            message = "🧠 Make your memory in this day";
             break;
           case "wednesday":
-            message = "my lovely day";
+            message = "💖 My lovely day";
             break;
           case "thursday":
-            message = "finally last day of the week";
+            message = "🎉 Finally last day of the week!";
             break;
           default:
-            message = "please insert the day";
+            message = "⚠️ Please insert a valid day!";
         }
 
         msg.textContent = message;
         inputValue.value = "";
-    
       });
     </script>
   </body>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background-color</title>
+     <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: #ecf0f1;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bg-container {
+      width: 800px;
+      height: 500px;
+      background-color: rgb(38, 146, 146);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: background-color 0.4s ease;
+      padding: 30px;
+    }
+
+    h1 {
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-container {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      width: 100px;
+      padding: 10px;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+
+    button[name="red"] {
+      background-color: red;
+    }
+    button[name="green"] {
+      background-color: green;
+    }
+    button[name="blue"] {
+      background-color: blue;
+    }
+    button[name="goldenrod"] {
+      background-color: goldenrod;
+    }
+    button[name="reset"] {
+      background-color: tomato;
+    }
+  </style>
+</head>
+<body>
+    <div class="bg-container">
+        <h1>Background Color</h1>
+        <div class="btn-container">
+            <button class="btn" name="red">Red</button>
+            <button class="btn" name="green">Green</button>
+            <button class="btn" name="blue">Blue</button>
+            <button class="btn" name="goldenrod">goldenrod</button>
+            <button class="btn" name="reset">Reset</button>
+        </div>
+    </div>
+    <script>
+        let bgContainer = document.querySelector(".bg-container");
+        let buttonContainer = document.querySelector(".btn-container");
+        console.log(bgContainer,buttonContainer);
+       
+     
+
+
+        function handleButton(e){
+        console.log(e.target.name);
+           let button= e.target.name;
+        if(button=== "red"){
+  bgContainer.style.backgroundColor= 'red'
+        }
+        if(button=== "green"){
+  bgContainer.style.backgroundColor= 'green'
+        }
+        if(button=== "blue"){
+  bgContainer.style.backgroundColor= 'blue'
+        }
+        if(button=== "goldenrod"){
+  bgContainer.style.backgroundColor= 'goldenrod'
+        }
+        if(button=== "reset"){
+  bgContainer.style.backgroundColor= 'tomato'
+        }
+
+        
+        }
+        buttonContainer.addEventListener('click', handleButton)
+        
+
+    </script>
+</body>
+</html>

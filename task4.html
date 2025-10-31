@@ -1,49 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu Task</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      min-height: 100vh;
+      margin-top: 50px;
+    }
+
+    section {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #3b82f6;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    input.task {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button.btn {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button.btn:hover {
+      background-color: #2563eb;
+    }
+
+    .error {
+      color: red;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    ul.list {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    ul.list li {
+      background: #e0f2fe;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .removeBtn {
+      background-color: #ef4444;
+      border: none;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .removeBtn:hover {
+      background-color: #dc2626;
+    }
+  </style>
 </head>
 <body>
+  <section>
     <h1>Menu Task</h1>
-    <form action="" class="form">
-        <input type="text" placeholder="input Task" class="task">
-       <button class="btn">Add</button>
+    <form class="form">
+      <input type="text" placeholder="Input task" class="task" />
+      <button class="btn">Add</button>
     </form>
     <p class="error"></p>
     <ul class="list"></ul>
-    <script>
-        let form = document.querySelector('.form');
-        let inputTask= document.querySelector('.task')
-        let btn= document.querySelector('.btn');
-        let ullist = document.querySelector('.list');
-        let error= document.querySelector(".error");
-        let removeBtn= document.querySelector(".removeBtn")
+  </section>
 
-       btn.addEventListener('click', (e)=>{
-           e.preventDefault();
-        // console.log(task.value);
+  <script>
+    let form = document.querySelector('.form');
+    let inputTask = document.querySelector('.task');
+    let btn = document.querySelector('.btn');
+    let ullist = document.querySelector('.list');
+    let error = document.querySelector('.error');
 
-        if(inputTask.value==""){
-            error.innerHTML = "please insert task";
-         
-        }else {
-        error.innerHTML="";
-              ullist.innerHTML +=`<li><button class="removeBtn">remove</button>
-              <span> ${inputTask.value}</span> </li>`;
-               
-        }
-       
-  inputTask.value="";
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
 
-       })
-     
-      ullist.addEventListener('click',(e)=>{
-       if(e.target.classList.contains("removeBtn")){
+      if (inputTask.value.trim() === '') {
+        error.innerHTML = 'Please insert a task';
+      } else {
+        error.innerHTML = '';
+        ullist.innerHTML += `
+          <li>
+            <span>${inputTask.value}</span>
+            <button class="removeBtn">Remove</button>
+          </li>`;
+      }
+
+      inputTask.value = '';
+    });
+
+    ullist.addEventListener('click', (e) => {
+      if (e.target.classList.contains('removeBtn')) {
         e.target.parentElement.remove();
-       }
-    })
-    </script>
+      }
+    });
+  </script>
 </body>
 </html>

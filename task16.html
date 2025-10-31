@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #74ebd5, #acb6e5);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    section {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      width: 360px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .con {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: 0.3s;
+      font-size: 15px;
+    }
+
+    input[type="text"]:focus {
+      border-color: #4a90e2;
+      box-shadow: 0 0 5px rgba(74, 144, 226, 0.4);
+    }
+
+    .submit {
+      width: 100%;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .submit:hover {
+      background-color: #357abd;
+    }
+
+    .msg {
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+   <section>
+    <form action="" method="">
+  <div class="user con">
+   <label for="fname">User name:</label>
+  <input type="text" id="uname" name="uname">
+  </div>
+<div class="mail con">
+     <label for="mail">Email:</label>
+  <input type="text" id="mail" name="mail">
+  <p class="msg"></p>
+</div>
+  <input type="submit" value="Send" class="submit">
+</form>
+   </section> 
+   <script>
+      let form = document.querySelector("form")
+      let mail = document.querySelector("#mail");
+      let submit = document.querySelector(".submit");
+      let msg = document.querySelector(".msg");
+
+      form.addEventListener('submit',function(e){
+e.preventDefault();
+if(validateEmail(mail.value)){
+msg.textContent="Email is valid";
+msg.style.color = "green";
+      }else{
+   msg.textContent="Email not valid";
+   msg.style.color= "red";
+}
+
+
+      } )
+      
+  function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+
+   </script>
+</body>
+</html>

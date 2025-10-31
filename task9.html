@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        section {
+            width: 80%;
+            background-color: #eee;
+            margin: 0 auto;
+            text-align: center;
+           padding-inline: 20px;
+        }
+        .container {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;  
+           /* margin: 10px; */
+           flex-wrap: wrap;     
+         }
+        .product-card{
+            width: 600px;
+            height: 130px;
+            padding: 15px;
+            border-radius: 20px;
+            background-color: aqua;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+    </style>
+    <title>Task 9</title>
+</head>
+<body>
+    <section>
+        <h1>product List</h1>
+        <div class="container">
+            <!-- <div class="product-card">
+                <div class="product-content">
+                    <h2>product</h2>
+                    <p>price</p>
+                    <p>description</p>
+                </div>
+                <div class="btn">
+                    <button class="del">Delete</button>
+                    <button class="update">Update</button>
+                </div>
+            </div> -->
+
+        </div>
+    </section>
+  <script>
+let container= document.querySelector(".container");
+let listProduct = [
+    {name:"laptop", price:500, description:"high laptop for games"},
+    {name:"watch", price:300, description:"high performance watch"},
+    {name:"mobile", price:400, description:"A smartphone with the AMOLED screen"}
+    
+]
+function displayProduct(products){
+    let allProduct="";
+products.forEach(item=>{
+allProduct += `
+        <div class="product-card">
+                <div class="product-content">
+                    <h2>Name : ${item.name}</h2>
+                    <p> Price: ${item.price}$</p>
+                    <p>Description: ${item.description}</p>
+                </div>
+                <div class="btn">
+                    <button class="del">Delete</button>
+                    <button class="update">Update</button>
+                </div>
+            </div>
+
+`
+})
+container.innerHTML= allProduct;
+}
+displayProduct(listProduct);
+
+container.addEventListener('click',(e)=>{
+    console.log(e.target);
+    if(e.target.classList.contains('del')){
+        e.target.closest('.product-card').remove();
+    }
+})
+
+container.addEventListener('click',(e)=>{
+    if(e.target.classList.contains('update')){
+        
+        
+    }
+})
+  </script>  
+</body>
+</html>

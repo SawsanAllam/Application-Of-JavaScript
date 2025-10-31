@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+   
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    .container {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      padding: 30px;
+      width: 380px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .user {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .card {
+      background-color: #f8faff;
+      border-radius: 15px;
+      padding: 15px 20px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background-color: #eef5ff;
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .info p {
+      margin-bottom: 5px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 7px 12px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+<section>
+    <div class="container">
+       <div class="user"></div>
+
+    </div>
+</section>
+<script>
+    let container = document.querySelector(".container");
+    let userDiv = document.querySelector(".user")
+    function User(name, age, email){
+        this.name = name;
+        this.age = age;
+        this.email= email;
+    
+    this.greet= function(){
+        return `Hello my name is ${this.name}  my age is ${this.age} my mail is ${this.email}`
+    }
+}
+    let users =[
+     new User("osama", 20, "osama@o.com"),
+     new User("sama",21, "sama@o.com")
+]
+
+function updateUser(){
+userDiv.innerHTML= users.map(user=>`<p>${user.greet()}</p>
+<button class="btn">Change Name </button>`).join("");
+
+let btns=document.querySelectorAll(".btn");
+btns.forEach((btn,i)=>{
+ btn.addEventListener('click', ()=>{
+let newName= prompt(`change name ${users[i].name}`);
+users[i].name=newName;
+console.log(users[i]);
+
+updateUser();
+ 
+});
+});
+}
+
+updateUser();
+
+
+
+</script>
+</body>
+</html>

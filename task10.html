@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User schedule</title>
+     <style>
+    body {
+     
+      background-color: #f3f6fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+      padding: 12px;
+    }
+
+    tr:first-child {
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    input {
+      width: 90%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      transition: border 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #3498db;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #217dbb;
+      transform: scale(1.05);
+    }
+
+    .del {
+      background-color: #e74c3c;
+    }
+
+    .del:hover {
+      background-color: #c0392b;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+    <h1>User schedule</h1>
+    <table>
+          <tr>
+            <td>Name</td>
+            <td>Age</td>
+            <td>Email</td>
+            <td>Procedures</td>
+          </tr>
+          <tr>
+            <td><input type="text" id="user-name" placeholder="User Name"></td>
+            <td><input type="number" id="age" placeholder="Age"></td>
+            <td><input type="email" name="email" id="email" placeholder="Email"></td>
+            <td><button>Add User</button></td>
+          </tr>
+      
+    </table>
+    <script> 
+          let btn = document.querySelector("button");
+          let table =document.querySelector("table")
+let userList=[]
+        btn.addEventListener('click',()=>{
+              let name = document.querySelector("#user-name").value;
+              let age = document.querySelector("#age").value;
+              let email=document.querySelector("#email").value;
+              let del =document.querySelector(".del");
+          userList.push({name, email,age})
+displayList();
+
+        });
+       
+        function displayList(){
+          let tableContent="";
+           userList.forEach(user => {
+              tableContent += `
+          <tr>
+              <td>${user.name}</td>
+              <td>${user.age}</td>
+              <td>${user.email}</td>
+              <td><button class="del">delete</button></td>
+          </tr>
+           `
+           });
+           table.innerHTML += tableContent;
+           
+        }
+   table.addEventListener('click', (e)=>{
+     if( e.target.classList.contains("del") ){
+       e.target.parentElement.parentElement.remove()
+     }
+ 
+   })
+    </script>
+</body>
+</html>

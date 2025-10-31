@@ -4,44 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      section {
+         text-align: center;
+      }
+      .books {
+         width: 70%;
+         margin: 0 auto;
+         background-color: #eee;
+      }
+      .card-container h2 {
+        background-color: #09c;
+        color: #fff;
+       padding-block: 15px;
+      
+      }
+      .book {
+         margin: 0 auto;
+         width: 70%;
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+      }
+      .card {
+         width: 250px;
+         height: 130px;
+         background-color: aquamarine;
+         border-radius: 20px;
+         margin: 10px;
+      }
+    </style>
 </head>
 <body>
    <section>
     <h1>library</h1>
    <div class="books">
-     <div class="fiction">
+    <div class="card-container">
+      <h2>Fiction Book</h2>
+       <div class="fiction book">
      <div class="card">
         <h3>Neon Dreams</h3>
         <p>auther: cyper</p>
-        <p>pages: <span class="page">150</span></p>
+        <p>pages: <span class="pages">150</span></p>
      </div>
      <div class="card">
         <h3>Electric Shadows</h3>
         <p>auther: spark</p>
-        <p>pages: <span class="page">200</span></p>
+        <p>pages: <span class="pages">200</span></p>
      </div>
     </div>
-   <div class="science">
+    </div>
+   <div class="card-container">
+      <h2>Science Book</h2>
+      <div class="science book">
      <div class="card">
          <h3>Quantum Realms</h3>
         <p>auther: Quark</p>
-        <p>pages: <span class="page">300</span></p>
+        <p>pages: <span class="pages">300</span></p>
     </div>
     <div class="card">
          <h3>Cosmic Light</h3>
         <p>auther:  Astro</p>
-        <p>pages: <span class="page">250</span></p>
+        <p>pages: <span class="pages">250</span></p>
     </div>
    </div>
    </div>
+   </div>
    <div class="pageCount">
-    <p>All Pages: <span class="allPages"></span></p>
+    <p> count All Pages: <span class="allPages"></span></p>
    </div>
    </section> 
 <script>
-let page = document.querySelectorAll(".page");
-let allPages = document.querySelector(".allPage");
-page.reduce()
+let pageOfBook = document.querySelectorAll(".pages");
+let allPages = document.querySelector(".allPages");
+// console.log(page, allPages);
+
+function countPage(){
+   countAllPage= 0;
+   pageOfBook.forEach(page=>{
+  countAllPage += parseInt(page.textContent);
+  console.log(countAllPage);
+  
+    
+   })
+  allPages.innerHTML= countAllPage;
+}
+countPage();
 </script>
 </body>
 </html>

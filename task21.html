@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     body {
+     
+      background-color: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      margin: 0;
+    }
+
+    form {
+      background: #fff;
+      padding: 25px 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 320px;
+    }
+
+    form div {
+      margin-bottom: 15px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 3px rgba(0, 123, 255, 0.4);
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background 0.2s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .output {
+      margin-top: 25px;
+      background: #fff;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      width: 320px;
+      word-wrap: break-word;
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+    <form action="">
+        <div>
+            <input type="text" name="text" id="name" placeholder="name">
+        </div>
+        <div>
+            <input type="email" name="mail" id="mail" placeholder="mail">
+        </div>
+        <div>
+            <input type="number" name="num" id="age" placeholder="age">
+        </div>
+      <div>
+          <input type="submit" value="submit"id="submit">
+      </div>
+    </form>
+<div class="output"></div>
+    <script>
+let form = document.querySelector("form");
+let output = document.querySelector(".output");
+
+let submit = document.querySelector("#submit");
+// console.log(form, name, mail, num, submit);
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+let name = document.querySelector("#name").value;
+let email = document.querySelector("#mail").value;
+let age = document.querySelector("#age").value;
+let data = {
+    name:name,
+    email:email,
+    age:age
+}
+output.innerHTML = JSON.stringify(data)
+})
+    </script>
+</body>
+
+</html>

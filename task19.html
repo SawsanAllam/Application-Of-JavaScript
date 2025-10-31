@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body {
+         
+            background-color: #f5f6fa;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px;
+        }
+
+        .book-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 900px;
+        }
+
+        .book-container div {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .book-container div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.3em;
+        }
+
+        p {
+            color: #555;
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 14px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    </style>
+</head>
+<body>
+    <div class="book-container"></div>
+    <script>
+        class Book {
+            constructor(title, author, page ) {
+                this.title = title;
+                this.author = author;
+                this.page = page;
+            }
+            getSummary() {
+                return `${this.title} was written by ${this.author} - ${this.page}page.`;
+            }
+            
+        }
+        class Ebook extends Book{
+            constructor(title, author, page, year){
+                super(title, author,page);
+                this.year = year;
+            }
+            getEbookSummary(){
+                return `${this.getSummary()}this ebook was published in ${this.year}.`;
+            }
+        }
+        let book1 = new Book("book one", "sawsan", 200);
+        let book2 = new Book("book two", "osama", 300,2000);
+
+let bookContainer = document.querySelector('.book-container');
+[book1, book2].forEach(book => {
+    let bookDiv = document.createElement('div');
+    bookDiv.innerHTML = `<h2>${book.title}</h2>
+    <p>${book.getSummary()}</p>
+    <button onclick="start() ">Start Read</button>`;
+    bookContainer.appendChild(bookDiv);
+});
+function start() {
+    alert("you started reading");
+}
+    </script>
+</body>
+</html>

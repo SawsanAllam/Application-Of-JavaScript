@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #74b9ff, #a29bfe);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    section {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 350px;
+      transition: 0.3s;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+    }
+
+    h1 {
+      color: #0984e3;
+      margin-bottom: 20px;
+    }
+
+    .data-of-person {
+      font-size: 18px;
+      color: #2d3436;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      background: #6c5ce7;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #341f97;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+    <section>
+        <div class="data-of-person"></div>
+        <button class="btn">Show The Massege</button>
+    </section>
+    <script>
+        const dataOfPerson = document.querySelector(".data-of-person");
+        const btn = document.querySelector(".btn")
+        const person= {
+            name: "sawsan",
+            age :40,
+            job: "Software Engneer",
+            address :{
+              city: "cairo",
+              zip:123
+            },
+            language :" arabic"
+        }
+        const {name, age,job,address:{city,zip},language}= person;
+
+        function displayData({name, age,job}){
+
+            let data = `Hello My Name is ${name} My Age Is ${age} My job is ${job}`
+            dataOfPerson.innerHTML= data
+        }
+        btn.addEventListener('click',displayData(person))
+    </script>
+</body>
+</html>

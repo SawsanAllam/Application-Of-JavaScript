@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #8ec5fc, #e0c3fc);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    section {
+      width: 400px;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      padding: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 20px;
+      margin-bottom: 15px;
+      border: 2px solid #ccc;
+      border-radius: 25px;
+      font-size: 15px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #7b2ff7;
+      box-shadow: 0 0 5px rgba(123, 47, 247, 0.4);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(90deg, #7b2ff7, #f107a3);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #f107a3, #7b2ff7);
+      transform: scale(1.03);
+    }
+
+    .new-txt {
+      margin-top: 25px;
+      padding: 15px;
+      border-radius: 15px;
+      background: #f3f3f3;
+      color: #333;
+      min-height: 50px;
+      font-size: 16px;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      word-wrap: break-word;
+    }
+
+    h2 {
+      color: #555;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+    <section>
+     
+          <input type="text" placeholder="please insert the text">
+        <button>Clean Text</button>
+      <div class="new-txt"></div> 
+    </section>
+    <script>
+        let input= document.querySelector("input");
+        let btn= document.querySelector("button");
+        let newTxt = document.querySelector(".new-txt");
+        console.log(input, btn, newTxt);
+        
+        btn.addEventListener('click', function cleanText(){
+            let inputVal = input.value;
+            let cleaninput=  inputVal.trim().replace(/\s+/g, ' ').replace(/[^a-zA-Z0-9\u0600-\u06FF\s]/g, '');
+            newTxt.innerHTML= cleaninput;
+        })
+
+        
+
+    </script>
+</body>
+</html>
